@@ -1,6 +1,9 @@
 const correctAnswers = ['B', 'B', 'B', 'B'];
 const form = document.querySelector('.quiz-form')
 const scoreUpdate = document.querySelector('.result')
+function addPercent() {
+     return 100 / correctAnswers.length;
+}
 
 form.addEventListener('submit', e => {
     e.preventDefault();
@@ -13,7 +16,7 @@ form.addEventListener('submit', e => {
     userAnswers.forEach((answer, index) => {
         
         if (answer === correctAnswers[index]){
-            score += 25;
+            score += addPercent();
         }
         index++;
     });
