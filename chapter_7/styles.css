@@ -1,0 +1,30 @@
+body{
+    background: #eee;
+}
+form{
+    max-width: 200px;
+    margin: 40px auto;
+    background: white;
+    padding: 10px;
+}
+input{
+        display: block;
+        margin: 10px auto;
+        padding: 4px;
+}
+
+.feedback{
+    text-align: center;
+    padding: 4px;
+    margin: 10px auto;
+    color: white;
+
+}
+
+.success {
+    border: 2px solid limegreen;
+}
+
+.error {
+    border: 2px solid crimson;
+}
