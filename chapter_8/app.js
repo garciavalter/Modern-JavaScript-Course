@@ -3,7 +3,7 @@ const form = document.querySelector('.quiz-form')
 const scoreUpdate = document.querySelector('.result')
 
 function addPercent() {
-     return (100 / numberOfQuestions);
+     return (100 / correctAnswers.length);
 }
 
 form.addEventListener('submit', e => {
