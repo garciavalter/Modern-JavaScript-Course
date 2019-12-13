@@ -28,10 +28,10 @@ const salePrices = prices.map(price => price /2)
 console.log(salePrices);
 
 const products = [
-    {name: 'gold star', price: 20},
-    {name: 'mushroom', price: 40},
-    {name: 'green shells', price: 30},
-    {name: 'banana skin', price: 10},
+    {name: 'gold star', price: 30},
+    {name: 'mushroom', price: 10},
+    {name: 'green shells', price: 40},
+    {name: 'banana skin', price: 5},
     {name: 'red shells', price: 50},
 ];
 
@@ -125,3 +125,10 @@ players.sort((a,b) => b.score - a.score);
 
 console.log(players);
 
+
+
+const lowestPrice = products.filter(product => product.price < 20);
+console.log (lowestPrice);
+
+salePrice = lowestPrice.map(product => product.price / 2);
+console.log(salePrice);
