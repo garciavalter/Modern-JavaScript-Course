@@ -127,8 +127,15 @@ console.log(players);
 
 
 
-const lowestPrice = products.filter(product => product.price < 20);
-console.log (lowestPrice);
+// const lowestPrice = products.filter(product => product.price > 20);
+// console.log (lowestPrice);
 
-salePrice = lowestPrice.map(product => product.price / 2);
-console.log(salePrice);
+// const salePrice = lowestPrice.map(product => {
+//     return `the ${product.name} is ${product.price / 2} pounds`;
+// });
+
+const promos = products
+    .filter(product => product.price > 20)
+    .map(product => `the ${product.name} is ${product.price / 2} pounds`);
+// console.log (lowestPrice));
+console.log(promos);
