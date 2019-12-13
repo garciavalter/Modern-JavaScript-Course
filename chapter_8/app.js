@@ -1,8 +1,9 @@
 const correctAnswers = ['B', 'B', 'B', 'B'];
 const form = document.querySelector('.quiz-form')
 const scoreUpdate = document.querySelector('.result')
+
 function addPercent() {
-     return 100 / correctAnswers.length;
+     return (100 / numberOfQuestions);
 }
 
 form.addEventListener('submit', e => {
@@ -21,16 +22,14 @@ form.addEventListener('submit', e => {
         index++;
     });
     
-     
-
-     scrollTo(0,0);
+    scrollTo(0,0);
     //  scoreUpdate.querySelector('span').textContent = `${score / correctAnswers.length * 100}%`;
      scoreUpdate.classList.remove('d-none');
 
     let output = 0;
     const timer = setInterval(() => {
-        scoreUpdate.querySelector('span').textContent = `${output}%`;
-       if (output === score){
+        scoreUpdate.querySelector('span').textContent = `${Math.ceil(output)}%`;
+       if (output === Math.ceil(score)){
             clearInterval(timer);
        } else {
             output++;
