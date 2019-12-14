@@ -1,5 +1,7 @@
 // dates & times
 
+const before = new Date('February 1 2019 7:30:59');
+const timeOfClass = new Date(1553079153698);
 const now = new Date();
 
 console.log(now);
@@ -26,3 +28,21 @@ console.log('timestamp: ', now.getTime());
 console.log(now.toDateString());
 console.log(now.toTimeString());
 console.log(now.toLocaleString());
+
+// console.log(now.getTime(), before.getTime());
+
+const diff = now.getTime() - timeOfClass.getTime();
+
+console.log(diff);
+
+const mins = Math.round(diff / 1000 / 60);
+const hours = Math.round(mins / 60);
+const days = Math.round(hours / 24);
+
+
+console.log(mins, hours, days);
+
+console.log(`this class was recorded ${days} ago`);
+
+const timestamp = 1675938474990;
+console.log(new Date(timestamp));
