@@ -90,4 +90,4 @@ console.log(dateFns.format(now1, 'dddd, Do, MMMM, YYYY'));
 
 const before1 = new Date('February 1 2019 12:00:00');
 
-console.log(dateFns.distanceInWords(now1, before1,{addSuffix: true}));
+console.log(dateFns.distanceInWords(now1, before1,{addSuffix: true}));''
