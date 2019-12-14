@@ -17,11 +17,11 @@ const generateTemplate = todo => {
 const filterTodos = (term) => { 
     
     Array.from(list.children)
-    .filter(todo => !todo.textContent.includes(term))
+    .filter(todo => !todo.textContent.toLowerCase().includes(term))
     .forEach(todo => todo.classList.add('filtered')); 
 
     Array.from(list.children)
-    .filter(todo => todo.textContent.includes(term))
+    .filter(todo => todo.textContent.toLowerCase().includes(term))
     .forEach(todo => todo.classList.remove('filtered'));        
 }
 
@@ -51,7 +51,7 @@ addForm.addEventListener('submit', e => {
 
 searchTodos.addEventListener('keyup', () => {
     
-    const term = searchTodos.value.trim();
+    const term = searchTodos.value.toLowerCase().trim();
     filterTodos(term);
     
 })
