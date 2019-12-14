@@ -71,3 +71,23 @@ const tick = () => {
 };
 
 setInterval(tick, 1000);
+
+// using dateFns
+
+const now1 = new Date ();
+
+console.log(dateFns.isToday(now1));
+
+//formating options
+
+console.log(dateFns.format(now1, 'YYYY'));
+console.log(dateFns.format(now1, 'MMMM'));
+console.log(dateFns.format(now1, 'dddd'));
+console.log(dateFns.format(now1, 'Do'));
+console.log(dateFns.format(now1, 'dddd, Do, MMMM, YYYY'));
+
+// comparing dates
+
+const before1 = new Date('February 1 2019 12:00:00');
+
+console.log(dateFns.distanceInWords(now1, before1,{addSuffix: true}));
