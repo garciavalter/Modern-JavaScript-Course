@@ -48,8 +48,22 @@ const getTodos = (resource) => {
 //     .then(data => console.log(data))
 //     .catch(err => console.log(err));
 
-resources.forEach((resource) => {
-    getTodos(resource)
-        .then(data => console.log(data))
-        .catch(err => console.log(err));
+// let i = 0;
+// resources.forEach((resource) => {
+//     getTodos(resource)
+//         .then(data => console.log('Promisse resolved', resources.indexOf(resource) +1, data))
+//         .catch(err => console.log(err));
+//         i++;
+// });
+
+getTodos('todos/luigi.json').then(data =>{
+    console.log('promise 1 resolved: ', data);
+    return getTodos('todos/marios.json');
+}).then(data => {
+    console.log('promise 2 resolved: ', data);
+    return getTodos('todos/shaun.json');
+}).then(data => {
+    console.log('promise 3 resolved: ', data);
+}).catch(err => {
+    console.log('An error ocurred');
 });
