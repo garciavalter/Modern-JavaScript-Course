@@ -48,12 +48,8 @@ const getTodos = (resource) => {
 //     .then(data => console.log(data))
 //     .catch(err => console.log(err));
 
-getTodos('todos/shaun.json')
-    .then(data => console.log(data))
-    .catch(err => console.log(err));
-getTodos('todos/mario.json')
-    .then(data => console.log(data))
-    .catch(err => console.log(err));
-getTodos('todos/luigi.json')
-    .then(data => console.log(data))
-    .catch(err => console.log(err));
+resources.forEach((resource) => {
+    getTodos(resource)
+        .then(data => console.log(data))
+        .catch(err => console.log(err));
+});
