@@ -6,7 +6,8 @@ const getTodos = (callback) => {
         // console.log(request, request.readyState);
 
         if(request.readyState === 4 && request.status === 200) {
-            callback(undefined, request.responseText);
+            const data = JSON.parse(request.response);
+            callback(undefined, data);
         } else if (request.readyState === 4){
             callback('could not fetch data, error: ', undefined);
         }
@@ -14,12 +15,9 @@ const getTodos = (callback) => {
     });
 
 
-request.open('GET', 'https://jsonplaceholder.typicode.com/todoss/');
+request.open('GET', 'todos.json');
 request.send();
 };
-
-console.log(1);
-console.log(2);
 
 getTodos((err, data) => {
     console.log('callback fired!')
@@ -29,6 +27,3 @@ getTodos((err, data) => {
         console.log(data);
     }
 });
-
-console.log(3);
-console.log(4);
