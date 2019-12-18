@@ -3,6 +3,7 @@ const card = document.querySelector('.card');
 const details = document.querySelector('.details');
 const time = document.querySelector('img.time');
 const icon = document.querySelector('.icon img');
+const forecast = new Forecast();
 
 const updateUI = (data) => {
 
@@ -12,6 +13,7 @@ const updateUI = (data) => {
     // console.log(weather);
 
        // update details template
+    console.log(weather);
     details.innerHTML = `
     
     <h5 class="my-3">${cityDets.EnglishName}</h5>
@@ -38,51 +40,6 @@ const updateUI = (data) => {
     }
 };
 
-const updateCity = async (city) => {
-
-    // check if already have data stored
-    if (localStorage.length == 0) {
-        localStorage.setItem('dataIndex', 0);
-    }
-    dataIndex = localStorage.getItem('dataIndex');
-    
-   //check if city is already stored
-   let check = {};
-   let storeCode = 0;
-
-    for (let i = 1; i <= dataIndex; i++){
-        check = JSON.parse(localStorage.getItem(i));
-        let englishName = check.EnglishName;
-        console.log(englishName);
-        console.log('attempt: ' + i);
-        if (city.toLowerCase() == englishName.toLowerCase()) {
-            storeCode = i;
-            cityDets = JSON.parse(localStorage.getItem(storeCode));
-            weather =  JSON.parse(localStorage.getItem(cityDets.Key));
-            console.log('the data is local')        
-        
-            return { cityDets, weather};    
-        }
-    }
-
-    console.log(storeCode);
-    if (storeCode === 0) {
-        
-    // download data from web
-    const cityDets = await getCity(city);
-    const weather = await getWeather(cityDets.Key);
-    dataIndex++;
-    localStorage.setItem(dataIndex, JSON.stringify(cityDets));
-    localStorage.setItem(cityDets.Key, JSON.stringify(weather));
-    localStorage.setItem('dataIndex', dataIndex);
-    console.log('the data was fetched');
-    
-    return { cityDets, weather};
-    
-    } 
-    
-};
-
 cityForm.addEventListener('submit', e => {
     //prevent default action
     e.preventDefault();
@@ -91,11 +48,20 @@ cityForm.addEventListener('submit', e => {
     cityForm.reset();
 
     //update ul with new city
-    updateCity(city)
+    forecast.updateCity(city)
     .then(data => updateUI(data))
     .catch(err => console.log(err));
 
+    // set local storage
+    localStorage.setItem('city', city);
+
 });
+
+if (localStorage.getItem('city')){
+    forecast.updateCity(localStorage.getItem('city'))
+        .then(data => updateUI(data))
+        .catch(err => console.log(err));
+}
 
 
 
