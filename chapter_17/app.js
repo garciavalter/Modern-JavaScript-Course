@@ -12,6 +12,8 @@ const roomHistoryMusic = document.querySelector('.room-history-music')
 const roomHistoryNinjas = document.querySelector('.room-history-ninjas')
 const chatRoomList = document.querySelector('.chatroom-list')
 
+const now = new Date();
+
 let userName = 'Anon'
 let currentChannel = 'General';
 
@@ -50,10 +52,13 @@ btnNinjas.addEventListener('click', e =>{
     roomHistoryNinjas.classList.remove("hide");
 });
 
-const sendMessage = (username, message, time) => {
-    html = `
-    <li class="list-group-item"><strong>${username}</strong>: ${message}
-    <br><span class="timestamp">${time}</span></li>
+const sendMessage = (message, id) => {
+    let time = message.timeStamp.toDate();
+    let html = `
+    <li class="list-group-item" data-id"=${id}">
+    <div><strong>${message.userName}</strong>: ${message.message}</div>
+    <div class="timestamp">${time}</div>
+    </li>
     `
     switch(currentChannel){
         case 'General':
@@ -73,11 +78,43 @@ const sendMessage = (username, message, time) => {
     }
     
 }
+const deleteMessage = (id) => {
+    const messages = document.querySelectorAll('li');
+    console.log(messages);
+    messages.forEach(message => {
+        if(messages.getAttribute('data-id') === id){
+            messages.remove();
+        }
+    });
+};
+
+db.collection(currentChannel).onSnapshot(snapshot => {
+    snapshot.docChanges().forEach(change => {
+        const doc = change.doc;
+        if(change.type ==='added'){
+            sendMessage(doc.data(), doc.id);
+        } else if (change.type === 'removed'){
+            deleteMessage(doc.id);
+        } 
+        
+    })
+})
 
 btnSend.addEventListener('click', e => {
     e.preventDefault();
-    sendMessage(userName, messageToSent.value, new Date());
-    messageToSent.value = "";
+    const message = {
+        userName: userName, 
+        message: messageToSent.value,
+        timeStamp: firebase.firestore.Timestamp.fromDate(now)
+    };
+
+    db.collection(currentChannel).add(message).then(() => {
+        console.log('message added')
+        console.log(currentChannel);
+    }).catch(err => {
+        console.log(err)
+    });
+
 });
 
 btnUpdateName.addEventListener('click', e => {

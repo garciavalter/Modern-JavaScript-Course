@@ -53,6 +53,30 @@
             </div>
         </div>
     </div>
+    <!-- The core Firebase JS SDK is always required and must be listed first -->
+    <script src="https://www.gstatic.com/firebasejs/7.6.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.6.1/firebase-firestore.js"></script>
+
+    <!-- TODO: Add SDKs for Firebase products that you want to use
+        https://firebase.google.com/docs/web/setup#available-libraries -->
+
+    <script>
+    // Your web app's Firebase configuration
+    var firebaseConfig = {
+        apiKey: "AIzaSyAnRK1mdNm0Va4QMjVCIbysoFZqWqyc4h4",
+        authDomain: "ninja-chat-5988d.firebaseapp.com",
+        databaseURL: "https://ninja-chat-5988d.firebaseio.com",
+        projectId: "ninja-chat-5988d",
+        storageBucket: "ninja-chat-5988d.appspot.com",
+        messagingSenderId: "314092155741",
+        appId: "1:314092155741:web:52dbcea4557906924daeb4"
+    };
+    // Initialize Firebase
+    firebase.initializeApp(firebaseConfig);
+    const db = firebase.firestore();
+    </script>
+    
     <script src="app.js"></script>
 </body>
 </html>
+
