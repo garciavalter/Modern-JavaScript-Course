@@ -1,0 +1,58 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" href="styles.css">
+    <title>Document</title>
+</head>
+<body class="text-center">
+    <h1>Ninja Chat</h1>
+    <div>
+        <p>Choose your chatroom:</p>
+        <ul class="chatroom-list">
+            <button class="btn btn-outline-secondary styled btn-general" type="button">#general</button>
+            <button class="btn btn-outline-secondary styled btn-gamming" type="button">#gamming</button>
+            <button class="btn btn-outline-secondary styled btn-music" type="button">#music</button>
+            <button class="btn btn-outline-secondary styled btn-ninjas" type="button">#ninjas</button>
+        </ul>
+    </div>
+    <div class="row d-flex justify-content-center">
+        <div class=" col-md-9">
+            <ul class="room-history-general text-left list-group">
+            </ul>
+            <ul class="room-history-gamming text-left list-group">
+            </ul>
+            <ul class="room-history-music text-left list-group">
+            </ul>
+            <ul class="room-history-ninjas text-left list-group">
+            </ul>
+            <p></p>
+        </div>
+        
+        <div class="col-md-9 user-input">
+            <div class="input-group ">
+                <div class="input-group-prepend ">
+                    <label class="input-group-text">Your message:</label>
+                </div>
+                <input type="text" class="form-control message-to-sent" label="message-to-sent">
+                <div class="input-group-append">
+                    <button class="btn-send btn btn-outline-secondary styled" type="button">Send</button>
+                </div>
+            </div>    
+            <p></p>
+            <div class="input-group">
+                <div class="input-group-prepend">
+                    <label class="input-group-text">Update name: </label>
+                </div>
+                <input type="text" class="new-name form-control" label= "new-name">
+                <div class="input-group-append">
+                    <button class="btn-update-name btn btn-outline-secondary styled" type="button">Update</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="app.js"></script>
+</body>
+</html>

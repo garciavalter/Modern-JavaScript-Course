@@ -1,0 +1,20 @@
+.styled{
+    background-color: lightseagreen;
+    color: white;
+    border-color: lightseagreen;
+}
+.styled:hover{
+    color: darkslategray;
+    background-color: lightseagreen;
+    border-color: transparent;
+}
+
+.timestamp {
+    font-size: x-small;
+    color: rgba(0,0,0,0.5);
+}
+
+.hide
+{
+    display: none;
+}

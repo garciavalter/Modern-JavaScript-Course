@@ -32,7 +32,7 @@ const unsub = db.collection('recipes').onSnapshot(snapshot  => {
         } else if (change.type === 'removed'){
             deleteRecipe(doc.id);
         }
-        });
+    });
 });
 
 
