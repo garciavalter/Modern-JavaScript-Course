@@ -12,21 +12,21 @@
     <div>
         <p>Choose your chatroom:</p>
         <ul class="chatroom-list">
-            <button class="btn btn-outline-secondary styled btn-general" type="button">#general</button>
-            <button class="btn btn-outline-secondary styled btn-gamming" type="button">#gamming</button>
-            <button class="btn btn-outline-secondary styled btn-music" type="button">#music</button>
-            <button class="btn btn-outline-secondary styled btn-ninjas" type="button">#ninjas</button>
+            <button class="btn btn-outline-secondary styled btn-general channel-selector" button-id="General" type="button">#general</button>
+            <button class="btn btn-outline-secondary styled btn-gamming channel-selector" button-id="Gamming" type="button">#gamming</button>
+            <button class="btn btn-outline-secondary styled btn-music channel-selector" button-id="Music" type="button">#music</button>
+            <button class="btn btn-outline-secondary styled btn-ninjas channel-selector" button-id="Ninjas" type="button">#ninjas</button>
         </ul>
     </div>
     <div class="row d-flex justify-content-center">
-        <div class=" col-md-9">
-            <ul class="room-history-general text-left list-group">
+        <div class=" col-md-9 room-selector">
+            <ul class="room-history-general text-left list-group room-history" room-id="General">
             </ul>
-            <ul class="room-history-gamming text-left list-group">
+            <ul class="room-history-gamming text-left list-group room-history" room-id="Gamming">
             </ul>
-            <ul class="room-history-music text-left list-group">
+            <ul class="room-history-music text-left list-group room-history" room-id="Music">
             </ul>
-            <ul class="room-history-ninjas text-left list-group">
+            <ul class="room-history-ninjas text-left list-group room-history" room-id="Ninjas">
             </ul>
             <p></p>
         </div>
