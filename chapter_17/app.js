@@ -4,10 +4,6 @@ const messageToSent = document.querySelector('.message-to-sent');
 const newName = document.querySelector('.new-name');
 const btnSend = document.querySelector('.btn-send');
 const btnUpdateName = document.querySelector('.btn-update-name');
-const roomHistoryGeneral = document.querySelector('.room-history-general');
-const roomHistoryGamming = document.querySelector('.room-history-gamming');
-const roomHistoryMusic = document.querySelector('.room-history-music');
-const roomHistoryNinjas = document.querySelector('.room-history-ninjas');
 const chatRoomList = document.querySelector('.chatroom-list');
 
 const now = new Date();
@@ -26,7 +22,7 @@ channelSelector.forEach(button => {
     });
 });
 
-const sendMessage = (message, id, room) => {
+const sendMessage = (message, id) => {
     let time = message.timeStamp.toDate();
     let html = `
     <li class="list-group-item" data-id="${id}">
@@ -34,26 +30,11 @@ const sendMessage = (message, id, room) => {
     <div class="timestamp">${time}</div>
     </li>
     `
-    switch(currentChannel){
-        case "General":
-            roomHistoryGeneral.innerHTML += html;
-            console.log('Data added to: ' + currentChannel);
-            break;
-
-        case 'Gamming':
-            roomHistoryGamming.innerHTML += html;
-            console.log('Data added to: ' + currentChannel);
-            break;
-    
-        case 'Music':
-            roomHistoryMusic.innerHTML += html;
-            console.log('Data added to: ' + currentChannel);
-            break;
-    
-        case 'Ninjas':
-            roomHistoryNinjas.innerHTML += html;
-            console.log('Data added to: ' + currentChannel);
-    }
+    roomHistory.forEach(room => {
+        if(room.getAttribute('room-id') == currentChannel) {
+            room.innerHTML += html;
+        }
+    });
     
 }
 const deleteMessage = (id) => {
@@ -79,10 +60,9 @@ roomHistory.forEach(room => {
                 deleteMessage(doc.id);
             }
         });
-    });
     currentChannel = temporaryRoom;
+    });
 });
-
 
 btnSend.addEventListener('click', e => {
     e.preventDefault();
@@ -91,9 +71,7 @@ btnSend.addEventListener('click', e => {
         message: messageToSent.value,
         timeStamp: firebase.firestore.Timestamp.fromDate(now)
     };
-
     db.collection(currentChannel).add(message).then(() => {
-        console.log('message added')
         console.log(currentChannel);
     }).catch(err => {
         console.log(err)
