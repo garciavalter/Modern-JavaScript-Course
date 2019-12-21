@@ -26,7 +26,7 @@ channelSelector.forEach(button => {
     });
 });
 
-const sendMessage = (message, id) => {
+const sendMessage = (message, id, room) => {
     let time = message.timeStamp.toDate();
     let html = `
     <li class="list-group-item" data-id="${id}">
@@ -65,20 +65,23 @@ const deleteMessage = (id) => {
     });
 };
 
-
-db.collection(currentChannel).onSnapshot(snapshot => {
-    snapshot.docChanges().forEach(change => {
-        
-        const doc = change.doc;
-        console.log(doc);
-        if(change.type ==='added'){
-            sendMessage(doc.data(), doc.id);
-        } else if (change.type === 'removed'){
-            deleteMessage(doc.id);
-        } 
-        
-    })
-})
+// need to review all channels
+roomHistory.forEach(room => {
+    let temporaryRoom = currentChannel;
+    db.collection(room.getAttribute('room-id')).onSnapshot(snapshot => {
+        snapshot.docChanges().forEach(change => {
+            const doc = change.doc;
+            console.log(doc);
+            if(change.type ==='added'){
+                currentChannel = room.getAttribute('room-id');
+                sendMessage(doc.data(), doc.id);
+            } else if (change.type === 'removed'){
+                deleteMessage(doc.id);
+            }
+        });
+    });
+    currentChannel = temporaryRoom;
+});
 
 
 btnSend.addEventListener('click', e => {
