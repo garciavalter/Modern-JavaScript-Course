@@ -6,7 +6,6 @@ const btnSend = document.querySelector('.btn-send');
 const btnUpdateName = document.querySelector('.btn-update-name');
 const updateForm = document.querySelector('.update-form');
 const sendForm = document.querySelector('.send-form');
-
 const now = new Date();
 
 let userName = 'Anon';
@@ -17,7 +16,7 @@ channelSelector.forEach(button => {
         e.preventDefault();
         currentChannel = button.getAttribute('button-id');
         roomHistory.forEach(room => {
-            room.getAttribute('room-id') == currentChannel ?
+            room.getAttribute('room-id') === currentChannel ?
                 room.classList.remove("hide") : room.classList.add("hide");
         })
     });
@@ -50,7 +49,8 @@ const deleteMessage = (id) => {
 // need to review all channels
 roomHistory.forEach(room => {
     let temporaryRoom = currentChannel;
-    db.collection(room.getAttribute('room-id')).onSnapshot(snapshot => {
+    db.collection(room.getAttribute('room-id'))
+    .onSnapshot(snapshot => {
         snapshot.docChanges().forEach(change => {
             const doc = change.doc;
             if(change.type ==='added'){

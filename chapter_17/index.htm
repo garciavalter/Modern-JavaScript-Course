@@ -11,7 +11,7 @@
     <h1>Ninja Chat</h1>
     <div>
         <p>Choose your chatroom:</p>
-        <ul class="chatroom-list">
+        <ul>
             <button class="btn btn-outline-secondary channel-selector" button-id="General" type="button">#general</button>
             <button class="btn btn-outline-secondary channel-selector" button-id="Gamming" type="button">#gamming</button>
             <button class="btn btn-outline-secondary channel-selector" button-id="Music" type="button">#music</button>
@@ -21,15 +21,15 @@
     <div class=" col-md-9 content text-left ui">
         <ul class="list-group room-history" room-id="General">
         </ul>
-        <ul class="text-left list-group hide" room-id="Gamming">
+        <ul class="text-left list-group hide room-history" room-id="Gamming">
         </ul>
-        <ul class="text-left list-group hide" room-id="Music">
+        <ul class="text-left list-group hide room-history" room-id="Music">
         </ul>
-        <ul class="text-left list-group hide" room-id="Ninjas">
+        <ul class="text-left list-group hide room-history" room-id="Ninjas">
         </ul>
     </div>
     <form class="send-form">
-    <div class="col-md-9 user-input">
+    <div class="col-md-9 user-input ui">
         <form>
         <div class="input-group ui">
             <div class="input-group-prepend">

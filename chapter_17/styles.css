@@ -2,11 +2,15 @@
     background-color: lightseagreen;
     color: white;
     border-color: lightseagreen;
+    outline: none;
 }
 .btn:hover{
     color: darkslategray;
     background-color: lightseagreen;
     border-color: transparent;
+}
+.btn:focus{
+    outline: none !important;
 }
 
 .timestamp {
