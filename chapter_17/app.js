@@ -6,7 +6,6 @@ const btnSend = document.querySelector('.btn-send');
 const btnUpdateName = document.querySelector('.btn-update-name');
 const updateForm = document.querySelector('.update-form');
 const sendForm = document.querySelector('.send-form');
-const forms = document.querySelectorAll('form');
 
 const now = new Date();
 
