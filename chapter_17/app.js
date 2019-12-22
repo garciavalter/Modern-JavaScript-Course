@@ -4,7 +4,9 @@ const messageToSent = document.querySelector('.message-to-sent');
 const newName = document.querySelector('.new-name');
 const btnSend = document.querySelector('.btn-send');
 const btnUpdateName = document.querySelector('.btn-update-name');
-const chatRoomList = document.querySelector('.chatroom-list');
+const updateForm = document.querySelector('.update-form');
+const sendForm = document.querySelector('.send-form');
+const forms = document.querySelectorAll('form');
 
 const now = new Date();
 
@@ -22,7 +24,7 @@ channelSelector.forEach(button => {
     });
 });
 
-const sendMessage = (message, id) => {
+const updateHistory = (message, id) => {
     let time = message.timeStamp.toDate();
     let html = `
     <li class="list-group-item" data-id="${id}">
@@ -52,10 +54,9 @@ roomHistory.forEach(room => {
     db.collection(room.getAttribute('room-id')).onSnapshot(snapshot => {
         snapshot.docChanges().forEach(change => {
             const doc = change.doc;
-            console.log(doc);
             if(change.type ==='added'){
                 currentChannel = room.getAttribute('room-id');
-                sendMessage(doc.data(), doc.id);
+                updateHistory(doc.data(), doc.id);
             } else if (change.type === 'removed'){
                 deleteMessage(doc.id);
             }
@@ -64,23 +65,41 @@ roomHistory.forEach(room => {
     });
 });
 
-btnSend.addEventListener('click', e => {
-    e.preventDefault();
+const sendMessage = () => {
     const message = {
         userName: userName, 
-        message: messageToSent.value,
+        message: sendForm.message.value,
         timeStamp: firebase.firestore.Timestamp.fromDate(now)
     };
+    sendForm.reset();
     db.collection(currentChannel).add(message).then(() => {
-        console.log(currentChannel);
     }).catch(err => {
         console.log(err)
     });
+}
 
+btnSend.addEventListener('click', e => {
+    e.preventDefault();
+    sendMessage();
 });
+
+sendForm.addEventListener('submit', e=> {
+    e.preventDefault();
+    sendMessage();
+})
+
+const UpdateName = () => {
+    userName = updateForm.username.value;
+    updateForm.reset();
+}
 
 btnUpdateName.addEventListener('click', e => {
     e.preventDefault();
-    userName = newName.value;
-    newName.value="";
+    UpdateName();
+    
+});
+
+updateForm.addEventListener('submit', e => {
+    e.preventDefault();
+    UpdateName();
 });

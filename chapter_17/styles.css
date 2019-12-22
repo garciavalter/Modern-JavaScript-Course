@@ -1,9 +1,9 @@
-.styled{
+.btn{
     background-color: lightseagreen;
     color: white;
     border-color: lightseagreen;
 }
-.styled:hover{
+.btn:hover{
     color: darkslategray;
     background-color: lightseagreen;
     border-color: transparent;
@@ -17,4 +17,9 @@
 .hide
 {
     display: none;
+}
+
+.ui {
+    margin: auto;
+    padding-bottom: 20px;
 }

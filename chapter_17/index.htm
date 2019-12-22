@@ -12,70 +12,51 @@
     <div>
         <p>Choose your chatroom:</p>
         <ul class="chatroom-list">
-            <button class="btn btn-outline-secondary styled btn-general channel-selector" button-id="General" type="button">#general</button>
-            <button class="btn btn-outline-secondary styled btn-gamming channel-selector" button-id="Gamming" type="button">#gamming</button>
-            <button class="btn btn-outline-secondary styled btn-music channel-selector" button-id="Music" type="button">#music</button>
-            <button class="btn btn-outline-secondary styled btn-ninjas channel-selector" button-id="Ninjas" type="button">#ninjas</button>
+            <button class="btn btn-outline-secondary channel-selector" button-id="General" type="button">#general</button>
+            <button class="btn btn-outline-secondary channel-selector" button-id="Gamming" type="button">#gamming</button>
+            <button class="btn btn-outline-secondary channel-selector" button-id="Music" type="button">#music</button>
+            <button class="btn btn-outline-secondary channel-selector" button-id="Ninjas" type="button">#ninjas</button>
         </ul>
     </div>
-    <div class="row d-flex justify-content-center">
-        <div class=" col-md-9 room-selector">
-            <ul class="room-history-general text-left list-group room-history" room-id="General">
-            </ul>
-            <ul class="room-history-gamming text-left list-group room-history hide" room-id="Gamming">
-            </ul>
-            <ul class="room-history-music text-left list-group room-history hide" room-id="Music">
-            </ul>
-            <ul class="room-history-ninjas text-left list-group room-history hide" room-id="Ninjas">
-            </ul>
-            <p></p>
+    <div class=" col-md-9 content text-left ui">
+        <ul class="list-group room-history" room-id="General">
+        </ul>
+        <ul class="text-left list-group hide" room-id="Gamming">
+        </ul>
+        <ul class="text-left list-group hide" room-id="Music">
+        </ul>
+        <ul class="text-left list-group hide" room-id="Ninjas">
+        </ul>
+    </div>
+    <form class="send-form">
+    <div class="col-md-9 user-input">
+        <form>
+        <div class="input-group ui">
+            <div class="input-group-prepend">
+                <label class="input-group-text">Your message:</label>
+            </div>
+            <input type="text" class="form-control" type="message" name="message">
+            <div class="input-group-append">
+                <button class="btn btn-outline-secondary btn-send" type="button">Send</button>
+            </div>
         </div>
-        
-        <div class="col-md-9 user-input">
-            <div class="input-group ">
-                <div class="input-group-prepend ">
-                    <label class="input-group-text">Your message:</label>
-                </div>
-                <input type="text" class="form-control message-to-sent" label="message-to-sent">
-                <div class="input-group-append">
-                    <button class="btn-send btn btn-outline-secondary styled" button-id="send" type="button">Send</button>
-                </div>
-            </div>    
-            <p></p>
+        </form>    
+        <form class="update-form">
             <div class="input-group">
                 <div class="input-group-prepend">
                     <label class="input-group-text">Update name: </label>
                 </div>
-                <input type="text" class="new-name form-control" label= "new-name">
-                <div class="input-group-append">
-                    <button class="btn-update-name btn btn-outline-secondary styled" button-id="update" type="button">Update</button>
+                    <input type="text" class="form-control" type="username" name="username">
+                    <div class="input-group-append">
+                        <button class="btn btn-outline-secondary btn-update-name" type="update" type="button">Update</button>  
                 </div>
             </div>
-        </div>
+        </form>
     </div>
-    <!-- The core Firebase JS SDK is always required and must be listed first -->
+    
     <script src="https://www.gstatic.com/firebasejs/7.6.1/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/7.6.1/firebase-firestore.js"></script>
-
-    <!-- TODO: Add SDKs for Firebase products that you want to use
-        https://firebase.google.com/docs/web/setup#available-libraries -->
-
-    <script>
-    // Your web app's Firebase configuration
-    var firebaseConfig = {
-        apiKey: "AIzaSyAnRK1mdNm0Va4QMjVCIbysoFZqWqyc4h4",
-        authDomain: "ninja-chat-5988d.firebaseapp.com",
-        databaseURL: "https://ninja-chat-5988d.firebaseio.com",
-        projectId: "ninja-chat-5988d",
-        storageBucket: "ninja-chat-5988d.appspot.com",
-        messagingSenderId: "314092155741",
-        appId: "1:314092155741:web:52dbcea4557906924daeb4"
-    };
-    // Initialize Firebase
-    firebase.initializeApp(firebaseConfig);
-    const db = firebase.firestore();
-    </script>
-    
+    <script src="dbconfig.js"></script>
     <script src="app.js"></script>
 </body>
 </html>
