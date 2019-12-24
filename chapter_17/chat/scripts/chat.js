@@ -4,7 +4,7 @@ class Chatroom {
         this.username = username;
         this.chats = db.collection('chats');
         this.unsub;
-    }
+    }   
 
     async addChat (message) { 
         const now = new Date();
@@ -20,9 +20,9 @@ class Chatroom {
     getChats (callback){
         this.unsub = this.chats
             .where('room', '==', this.room)
-            .orderBy('created_at')""
+            .orderBy('created_at')
             .onSnapshot(snapshot => {
-                snapshot.doChanges().forEach(change => {
+                snapshot.docChanges().forEach(change => {
                     if (change.type ==='added'){
                         callback(change.doc.data());
                     }
@@ -40,14 +40,3 @@ class Chatroom {
         }   
     }
 }
-
-const chatroom = new Chatroom('general', 'shaun')
-
-chatroom.getChats((data) => {
-    console.log(data);
-});
-
-chatroom.updateRoom('gaming');
-
-
-
