@@ -19,8 +19,8 @@ class Chatroom {
     }
     getChats (callback){
         this.unsub = this.chats
-            // .where('room', '==', this.room)
-            // .orderBy('created_at')
+            .where('room', '==', this.room)
+            .orderBy('created_at')""
             .onSnapshot(snapshot => {
                 snapshot.doChanges().forEach(change => {
                     if (change.type ==='added'){
@@ -34,7 +34,10 @@ class Chatroom {
     }
     updateRoom(room){
         this.room = room;
-        
+        console.log('room updated');
+        if(this.unsub){
+            this.unsub();
+        }   
     }
 }
 
@@ -45,7 +48,6 @@ chatroom.getChats((data) => {
 });
 
 chatroom.updateRoom('gaming');
-console.log('room updated');
-// this.unsub();
+
 
 
