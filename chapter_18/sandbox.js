@@ -67,3 +67,21 @@ ninjas.forEach(ninja => {
     console.log(ninja.name, ninja.age);
 })
 
+const symbolOne = Symbol('a generic name here');
+const symbolTwo = Symbol('a generic name here');
+
+console.log(symbolOne, symbolTwo, typeof symbolOne);
+
+console.log(symbolOne === symbolTwo);
+
+const ninja = {};
+
+ninja.age = 30;
+ninja['belt'] = 'orange';
+ninja['belt'] = 'black';
+
+ninja[symbolOne] = 'ryu';
+ninja[symbolTwo] = 'shaun';
+
+console.log(ninja);
+
