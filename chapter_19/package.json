@@ -4,9 +4,8 @@
   "description": "",
   "main": "sandbox.js",
   "scripts": {
-    "babel": "node_modules/.bin/babel src/index.js -w -o dist/assets/bundle.js",
-    "webpack": "node_modules/.bin/webpack -w",
-    "server": "webpack-dev-server"
+    "build": "node_modules/.bin/webpack --mode production",
+    "server": "webpack-dev-server --mode development"
   },
   "author": "",
   "license": "ISC",
@@ -14,6 +13,7 @@
     "@babel/cli": "^7.7.7",
     "@babel/core": "^7.7.7",
     "@babel/preset-env": "^7.7.7",
+    "babel-loader": "^8.0.6",
     "webpack": "^4.41.4",
     "webpack-cli": "^3.3.10"
   },
